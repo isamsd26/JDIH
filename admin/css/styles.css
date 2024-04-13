@@ -114,9 +114,12 @@ body {
 }
 
 .bg-card{
-  background-image: linear-gradient(to bottom, rgba(255, 149, 0, 0.92) 0%, rgba(227, 157, 5, 0.87) 50%, rgba(255, 228, 1, 1) 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 228, 1, 1) 0%, rgba(227, 157, 5, 0.87) 50%, rgba(255, 149, 0, 0.92) 100%);
 }
 
+.bg-tbl{
+  background-color: grey;
+}
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -4258,7 +4261,7 @@ textarea.form-control-lg {
   padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
   margin-bottom: 0;
   color: var(--bs-card-cap-color);
-  background-color: var(--bs-card-cap-bg);
+  background-color: grey;
   border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
 }
 .card-header:first-child {
@@ -10873,9 +10876,7 @@ body {
   min-width: 0;
 }
 
-#layoutSidenav {
-  display: flex;
-}
+
 #layoutSidenav #layoutSidenav_nav {
   flex-basis: 225px;
   flex-shrink: 0;

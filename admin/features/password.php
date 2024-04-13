@@ -17,7 +17,7 @@
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
-                <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FFE401;">
+                <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633">
                     <!-- Navbar Brand-->
                     <a class="navbar-brand ps-3 text-dark fw-bold">BIRO HUKUM INFORMATION CENTER</a>
                     <!-- Sidebar Toggle-->
