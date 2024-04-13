@@ -104,6 +104,19 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.bg-log{
+  background-image: url('../assets/img/candi.jpg');
+  background-size: cover;
+ 
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-card{
+  background-image: linear-gradient(to bottom, rgba(255, 149, 0, 0.92) 0%, rgba(227, 157, 5, 0.87) 50%, rgba(255, 228, 1, 1) 100%);
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -3146,6 +3159,7 @@ textarea.form-control-lg {
   --bs-btn-box-shadow: none;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   text-decoration: underline;
+  margin-left: 8rem;
 }
 .btn-link:focus-visible {
   color: var(--bs-btn-color);
@@ -10955,15 +10969,40 @@ body {
 .sb-sidenav-menu .nav-link .sb-nav-link-icon {
   margin-right: 0.5rem;
 }
+@media screen and (max-width: 1000px) {
+  .row {
+    flex-direction: column;
+  }
 
+  .col-6 {
+    width: 100%;
+  }
+
+  .logo-jat {
+    margin-bottom: 20px;
+  }
+}
+.logo-jat{
+  width: 65%;
+  height: 75%;
+}
 .sb-topnav {
   padding-left: 0;
-  height: 56px;
+  height: 80px;
   z-index: 1039;
 }
 .sb-topnav .navbar-brand {
   width: 225px;
   margin: 0;
+}
+
+@media screen and (max-width: 590px) {
+  .navbar-brand {
+    display: none;
+  }
+  .btn-link{
+    margin-left: 0;
+  }
 }
 .sb-topnav.navbar-dark #sidebarToggle {
   color: rgba(255, 255, 255, 0.5);
