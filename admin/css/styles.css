@@ -118,7 +118,10 @@ body {
 }
 
 .bg-tbl{
-  background-color: grey;
+  background-color: #D6D6D6;
+}
+.bg-tabel{
+  background-color:#eee9e9fe;
 }
 hr {
   margin: 1rem 0;
@@ -4240,6 +4243,20 @@ textarea.form-control-lg {
   color: var(--bs-card-color);
 }
 
+@media (max-width: 450px) {
+  .card-body {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .card-header .fas {
+    font-size: 1.2rem; /* Mengurangi ukuran ikon */
+  }
+
+  .card-header div {
+    font-size: 0.9rem; /* Mengurangi ukuran teks */
+  }
+}
+
 .card-title {
   margin-bottom: var(--bs-card-title-spacer-y);
 }
@@ -4261,7 +4278,7 @@ textarea.form-control-lg {
   padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x);
   margin-bottom: 0;
   color: var(--bs-card-cap-color);
-  background-color: grey;
+  
   border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
 }
 .card-header:first-child {

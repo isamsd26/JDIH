@@ -8,9 +8,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>BIRO HUKUM INFORMATION CENTER</title>
-    <link rel="icon" type="image/x-icon" href="assets/jateng.png" />
+    <link rel="icon" type="image/x-icon" href="../assets/jateng.png" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -33,7 +33,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="features/login.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../features/login.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -44,7 +44,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link text-dark" href="index.php">
+                        <a class="nav-link text-dark" href="../index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -56,7 +56,7 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="form/tagihan.php"> Tagihan Iuran</a>
+                                <a class="nav-link" href="#"> Tagihan Iuran</a>
                                 <a class="nav-link" href="#">Slip gaji pelatih</a>
                                 <a class="nav-link" href="#">Pengumuman pertandingan</a>
                                 <a class="nav-link" href="#">Berita</a>
@@ -87,11 +87,11 @@
                                 Rapat / Kegiatan
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="features/rapat.php">Rapat</a></li>
+                                <li><a class="dropdown-item" href="#">Rapat</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="../index.php">Kegiatan</a></li>
                             </ul>
                         </div>
                     </div>
@@ -100,14 +100,14 @@
                             <div class="card-header bg-tbl d-flex justify-content-between align-items-center">
                                 <div>
                                     <i class="fas fa-table me-1"></i>
-                                    Pilih kegiatan untuk dipilih
+                                    Pilih rapat / kegiatan untuk dipilih
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-light">Tambah Kegiatan <i class="fa-solid fa-plus" style="color: #0d0d0d;"></i></button>
                                 </div>
                             </div>
                             <div class="card-body bg-tbl">
-                                <?php include 'features/dom/tbl-keg.php'; ?>
+                                <?php include 'dom/tbl-rapat.php'; ?>
                             </div>
                         </div>
                     </div>
@@ -131,9 +131,9 @@
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 
-    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
 
 </html>
