@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,19 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-
 <body class="sb-nav-fixed">
+    <?php 
+        if(isset($_SESSION['status'])){
+            ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                 <?php echo $_SESSION['status']; ?>
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+            <?php
+                unset($_SESSION['status']);
+        }
+    ?>
+
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633;">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-dark" href="index.html">BIRO HUKUM INFORMATION CENTER</a>
@@ -80,61 +92,45 @@
                         <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
                     </ol>
                 </div>
-                <div class="row mx-0">
-                    <div class="col-2 ms-3">
-                        <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Rapat / Kegiatan
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Rapat</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="../index.php">Kegiatan</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col me-5">
-                        <div class="card mb-4">
-                            <div class="card-header bg-tbl d-flex justify-content-between align-items-center">
-                                <div>
-                                    <i class="fas fa-table me-1"></i>
-                                    Pilih rapat / kegiatan untuk dipilih
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-light" >Tambah Kegiatan <a class="fa-solid fa-plus" style="color: #0d0d0d;" href="dom/tmbh-surat.php"></a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body bg-tbl">
-                                <?php include 'dom/tbl-rapat.php'; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+    <h3> Tambah Barang </h3>
 
-        </div>
-
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../js/scripts.js"></script>
-
-    <script src="../js/datatables-simple-demo.js"></script>
+    <form action="koneksi.php" method="POST">
+        <table>
+            <tr>
+                <td> Alamat Pengirim </td>
+                <td> <input type="text" name="alamat_pengirim"> </td>
+            </tr>
+            <tr>
+                <td> Tanggal Surat </td>
+                <td> <input type="date" name="tanggal_surat"> </td>
+            </tr>
+            <tr>
+                <td> Nomor Surat </td>
+                <td> <input type="text" name="nomor_surat"> </td>
+            </tr>
+            <tr>
+                <td> Perihal </td>
+                <td> <input type="text" name="perihal"> </td>
+            </tr>
+            <tr>
+                <td> Alamat tujuan </td>
+                <td> <input type="text" name="alamat_tujuan"> </td>
+            </tr>
+            <tr>
+                <td> Isi Disposisi </td>
+                <td> <input type="text" name="isi_disposisi"> </td>
+            </tr>
+            <tr>
+                <td> Keterangan </td>
+                <td> <input type="text" name="keterangan"> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="save" class="btn btn-primary" value="Simpan"> </td>
+            </tr>
+        </table>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
