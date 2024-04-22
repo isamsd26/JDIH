@@ -20,7 +20,7 @@
         }
     ?>
 
-    <h3> Tambah Barang </h3>
+    <h3> Tambah Agenda Masuk </h3>
 
     <form action="koneksi.php" method="POST">
         <table>
@@ -42,17 +42,8 @@
             </tr>
             <tr>
                 <td> Alamat Tujuan </td>
-                <td> <input type="text" name="tgl_pelaksanaan"> </td>
+                <td> <input type="text" name="alamat_tujuan"> </td>
             </tr>
-            <tr>
-                <td> Tempat </td>
-                <td> <input type="text" name="tempat"> </td>
-            </tr>
-            <tr>
-                <td> Tujuan </td>
-                <td> <input type="text" name="tujuan"> </td>
-            </tr>
-            <tr>
                 <td> Isi Disposisi </td>
                 <td> <input type="text" name="isi_disposisi"> </td>
             </tr>
@@ -62,7 +53,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="simpan_undangan" class="btn btn-primary" value="Simpan"> </td>
+                <td><input type="submit" name="simpan_agenda_masuk" class="btn btn-primary" value="Simpan"> </td>
             </tr>
         </table>
     </form>

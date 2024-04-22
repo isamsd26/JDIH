@@ -20,49 +20,28 @@
         }
     ?>
 
-    <h3> Tambah Undangan </h3>
+    <h3> Tambah Rapat </h3>
 
     <form action="koneksi.php" method="POST">
         <table>
             <tr>
-                <td> Alamat Pengirim </td>
-                <td> <input type="text" name="alamat_pengirim"> </td>
+                <td> Tanggal </td>
+                <td> <input type="date" name="tanggal"> </td>
             </tr>
             <tr>
-                <td> Tanggal Surat </td>
-                <td> <input type="date" name="tanggal_surat"> </td>
-            </tr>
-            <tr>
-                <td> Nomor Surat </td>
-                <td> <input type="text" name="nomor_surat"> </td>
-            </tr>
-            <tr>
-                <td> Perihal </td>
-                <td> <input type="text" name="perihal"> </td>
-            </tr>
-            <tr>
-                <td> Tanggal Pelaksanaan </td>
-                <td> <input type="date" name="tgl_pelaksanaan"> </td>
+                <td> Waktu </td>
+                <td> <input type="time" name="waktu"> </td>
             </tr>
             <tr>
                 <td> Tempat </td>
                 <td> <input type="text" name="tempat"> </td>
             </tr>
             <tr>
-                <td> Tujuan </td>
-                <td> <input type="text" name="tujuan"> </td>
-            </tr>
-            <tr>
-                <td> Isi Disposisi </td>
-                <td> <input type="text" name="isi_disposisi"> </td>
-            </tr>
-            <tr>
-                <td> Keterangan </td>
-                <td> <input type="text" name="keterangan"> </td>
-            </tr>
+                <td> Rapat </td>
+                <td> <input type="text" name="rapat"> </td>
             <tr>
                 <td></td>
-                <td><input type="submit" name="simpan_undangan" class="btn btn-primary" value="Simpan"> </td>
+                <td><input type="submit" name="simpan_rapat" class="btn btn-primary" value="Simpan"> </td>
             </tr>
         </table>
     </form>
