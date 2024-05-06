@@ -14,7 +14,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed bg-dash">
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633;">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-dark" href="index.html">BIRO HUKUM INFORMATION CENTER</a>
@@ -56,11 +56,8 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="form/tagihan.php"> Tagihan Iuran</a>
-                                <a class="nav-link" href="#">Slip gaji pelatih</a>
-                                <a class="nav-link" href="#">Pengumuman pertandingan</a>
-                                <a class="nav-link" href="#">Berita</a>
-                                <a class="nav-link" href="#">Jadwal game</a>
+                                <a class="nav-link" href="features/sidebar/side-rapat.php"> Tambah Rapat</a>
+                                <a class="nav-link" href="features/sidebar/tambah-surat.php">Slip gaji pelatih</a>                              
                             </nav>
                         </div>
 
@@ -103,7 +100,7 @@
                                     Pilih kegiatan untuk dipilih
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-light">Tambah Kegiatan <i class="fa-solid fa-plus" style="color: #0d0d0d;"></i></button>
+                                    <button type="button" class="btn btn-light">Tambah Kegiatan<i class="fa-solid fa-plus ms-2" style="color: #0d0d0d;"></i></button>
                                 </div>
                             </div>
                             <div class="card-body bg-tbl">
