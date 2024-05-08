@@ -15,6 +15,28 @@
 </head>
 
 <body class="sb-nav-fixed bg-dash">
+    <?php
+    session_start();
+
+    if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'admin') {
+        header("Location: features/login.php");  // Arahkan ke halaman login
+        exit;
+    }
+
+    if (isset($_SESSION['pesan'])) {
+        echo "
+        <div class='toast show position-fixed top-0 end-0 p-3' role='alert' aria-live='assertive' aria-atomic='true' id='toast-notification' style='z-index: 9999;'>
+            <div class='toast-header'>
+                <strong class='me-auto'>Notifikasi</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+            </div>
+            <div class='toast-body'>
+                {$_SESSION['pesan']}
+            </div>
+        </div>";
+        unset($_SESSION['pesan']);  // Hapus pesan setelah ditampilkan
+    }
+    ?>
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633;">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-dark" href="index.html">BIRO HUKUM INFORMATION CENTER</a>
@@ -33,7 +55,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="features/login.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="features/logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -56,8 +78,16 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="features/sidebar/side-rapat.php"> Tambah Rapat</a>
-                                <a class="nav-link" href="features/sidebar/tambah-surat.php">Slip gaji pelatih</a>                              
+                                <a class="nav-link text-dark" href="features/sidebar/side-rapat.php"> Tambah Rapat</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="features/sidebar/tambah-surat.php">Tambah Surat</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="features/sidebar/tambah-undangan.php">Tambah Undangan</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="features/sidebar/tambah-agenda.php">Tambah Agenda</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="features/sidebar/tambah-agenda-aju.php">Tambah Agenda Ajuan</a>
+                                <hr class="mb-0">
                             </nav>
                         </div>
 
@@ -127,6 +157,13 @@
         </footer>
     </div>
     </div>
+    <script>
+        setTimeout(() => {
+            const toast = document.getElementById('toast-notification');
+            const toastInstance = bootstrap.Toast.getOrCreateInstance(toast);
+            toastInstance.hide();
+        }, 5000);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
 

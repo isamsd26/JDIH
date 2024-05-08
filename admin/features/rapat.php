@@ -33,7 +33,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../features/login.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -57,8 +57,13 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link text-dark" href="sidebar/side-rapat.php"> Tambah Rapat</a>
+                                <hr class="mb-0">
                                 <a class="nav-link text-dark" href="sidebar/tambah-surat.php">Tambah Surat</a>
-
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="sidebar/tambah-undangan.php">Tambah Undangan</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="sidebar/tambah-agenda.php">Tambah Agenda</a>
+                                <hr class="mb-0">
                             </nav>
                         </div>
 

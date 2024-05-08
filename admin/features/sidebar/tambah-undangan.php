@@ -79,6 +79,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
+
                 <div class="row mt-5 mx-0">
                     <div class="col-2 ms-3">
                         <div class="dropdown">
@@ -98,29 +99,45 @@
                         <div class="card mb-4">
                             <div class="card-header bg-tbl d-flex justify-content-center align-items-center">
                                 <div class="fs-1">
-                                    Tambahkan Rapat
+                                    Tambahkan Undangan
                                 </div>
                             </div>
                             <div class="card-body bg-tbl ">
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="id_rapat">ID Rapat :</label>
-                                    <input class="col-10" type="text" id="id_rapat" name="id_rapat">
+                                    <label class="col-2 text-end" for="no_surat">Nomor Surat :</label>
+                                    <input class="col-10" type="text" id="no_surat" name="no_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="nama_rapat">Nama Rapat :</label>
-                                    <input class="col-10" type="text" id="nama_rapat" name="nama_rapat">
+                                    <label class="col-2 text-end" for="alamat_pengirim">Alamat Pengirim :</label>
+                                    <input class="col-10" type="text" id="alamat_pengirim" name="alamat_pengirim">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="tanggal_rapat">Tanggal Rapat :</label>
-                                    <input class="col-10" type="date" id="tanggal_rapat" name="tanggal_rapat">
+                                    <label class="col-2 text-end" for="tanggal_surat">Tanggal Surat :</label>
+                                    <input class="col-10" type="date" id="tanggal_surat" name="tanggal_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="waktu_rapat">Waktu Rapat :</label>
-                                    <input class="col-10" type="time" id="waktu_rapat" name="waktu_rapat">
+                                    <label class="col-2 text-end" for="perihal">Perihal :</label>
+                                    <input class="col-10" type="text" id="perihal" name="perihal">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="tempat_rapat">Tempat Rapat :</label>
-                                    <input class="col-10" type="text" id="tempat_rapat" name="tempat_rapat">
+                                    <label class="col-2 text-end" for="tanggal_pelaksanaan">Tanggal Pelaksanaan :</label>
+                                    <input class="col-10" type="text" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="tempat">Tempat :</label>
+                                    <input class="col-10" type="text" id="tempat" name="tempat">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="tujuan">Tujuan :</label>
+                                    <input class="col-10" type="text" id="tujuan" name="tujuan">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="isi_disposisi">Isi Disposisi :</label>
+                                    <input class="col-10" type="text" id="isi_disposisi" name="isi_disposisi">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="keterangan">Keterangan :</label>
+                                    <input class="col-10" type="text" id="keterangan" name="keterangan">
                                 </div>
                                 <div class="d-flex justify-content-end me-3">
                                     <button type="submit" class="btn btn-warning">Simpan</button>

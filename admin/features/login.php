@@ -34,27 +34,16 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form method="post" action="action/check_login.php">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                            <label for="inputEmail">Email address</label>
+                                            <input class="form-control" id="inputEmail" type="text" name="username" placeholder="Username" required />
+                                            <label for="inputEmail">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                            <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" required />
                                             <label for="inputPassword">Password</label>
                                         </div>
-                                        <div class="row form-check mb-3">
-                                            <div class="col-6">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                            </div>
-                                            <div class="col">
-                                                <a class="small" href="password.php">Forgot Password?</a>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <a class="btn btn-dark d-flex justify-content-center text-dark" href="../index.php" style="background-color: #FFE401;">Login</a>
-                                        </div>
+                                        <button type="submit" class="btn btn-dark d-flex justify-content-center text-dark" style="background-color: #FFE401;">Login</button>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
@@ -65,6 +54,26 @@
                     </div>
                 </div>
             </main>
+        </div>
+        <div class="container">
+            <!-- Notifikasi Toast -->
+            <?php
+            session_start();
+            if (isset($_SESSION['pesan'])) {  // Ambil pesan dari sesi
+                echo "
+            <div class='toast show position-fixed bottom-0 end-0 p-3' role='alert' aria-live='assertive' aria-atomic='true'>
+                <div class='toast-header'>
+                    <strong class='me-auto'>Notifikasi</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+                </div>
+                <div class='toast-body'>
+                    {$_SESSION['pesan']}
+                </div>
+            </div>";
+                unset($_SESSION['pesan']);  // Hapus pesan setelah ditampilkan
+            }
+            ?>
+            <!-- Form Login -->
         </div>
         <div id="layoutAuthentication_footer">
             <footer class="py-4 bg-light mt-auto">
@@ -82,7 +91,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 
 </html>
