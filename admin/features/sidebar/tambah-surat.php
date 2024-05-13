@@ -1,3 +1,6 @@
+<?php
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +18,16 @@
 </head>
 
 <body class="sb-nav-fixed bg-dash">
+    <?php if ($status === 'sukses') : ?>
+        <div class="toast align-items-center text-white bg-success fixed-top mx-auto" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Surat berhasil ditambahkan!
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php endif; ?>
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633;">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-dark" href="index.html">BIRO HUKUM INFORMATION CENTER</a>
@@ -98,34 +111,42 @@
                         <div class="card mb-4">
                             <div class="card-header bg-tbl d-flex justify-content-center align-items-center">
                                 <div class="fs-1">
-                                    Tambahkan Rapat
+                                    Tambahkan Surat
                                 </div>
                             </div>
-                            <div class="card-body bg-tbl ">
+                            <form class="card-body bg-tbl" method="POST" action="../action/simpan_surat.php">
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="id_rapat">ID Rapat :</label>
-                                    <input class="col-10" type="text" id="id_rapat" name="id_rapat">
+                                    <label class="col-2 text-end" for="id_surat">ID Surat :</label>
+                                    <input class="col-10" type="text" id="id_surat" name="id_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="nama_rapat">Nama Rapat :</label>
-                                    <input class="col-10" type="text" id="nama_rapat" name="nama_rapat">
+                                    <label class="col-2 text-end" for="alamat_pengirim">Alamat Pengirim :</label>
+                                    <input class="col-10" type="text" id="alamat_pengirim" name="alamat_pengirim">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="tanggal_rapat">Tanggal Rapat :</label>
-                                    <input class="col-10" type="date" id="tanggal_rapat" name="tanggal_rapat">
+                                    <label class="col-2 text-end" for="tanggal_surat">Tanggal Surat :</label>
+                                    <input class="col-10" type="date" id="tanggal_surat" name="tanggal_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="waktu_rapat">Waktu Rapat :</label>
-                                    <input class="col-10" type="time" id="waktu_rapat" name="waktu_rapat">
+                                    <label class="col-2 text-end" for="nomor_surat">Nomor Surat :</label>
+                                    <input class="col-10" type="text" id="nomor_surat" name="nomor_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="tempat_rapat">Tempat Rapat :</label>
-                                    <input class="col-10" type="text" id="tempat_rapat" name="tempat_rapat">
+                                    <label class="col-2 text-end" for="perihal">Perihal :</label>
+                                    <input class="col-10" type="text" id="perihal" name="perihal">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="alamat_tujuan">Alamat Tujuan :</label>
+                                    <input class="col-10" type="text" id="alamat_tujuan" name="alamat_tujuan">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="isi_disposisi">Isi Disposisi :</label>
+                                    <input class="col-10" type="text" id="isi_disposisi" name="isi_disposisi">
                                 </div>
                                 <div class="d-flex justify-content-end me-3">
-                                    <button type="submit" class="btn btn-warning">Simpan</button>
+                                    <button type="submit" class="btn btn-warning" name="simpan">Simpan</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 

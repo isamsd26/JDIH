@@ -144,7 +144,7 @@ body {
 .margin-fil{
   margin-top: 100px
 }
-.btn-warning{
+.btn-light{
   max-width: 100%;
   width: 190px;
 }
@@ -11027,12 +11027,14 @@ body {
   }
 }
 .logo-jat{
-  width: 200px;
-  height: 200px;
+  max-width: 100%;
+  width: 100px;
+  max-height: 100%;
+  height: 100px;
 }
 .logo-jdih{
-  width: 200px;
-  height: 100px;
+  width: 100px;
+  height: 50px;
 }
 .sb-topnav {
   padding-left: 0;

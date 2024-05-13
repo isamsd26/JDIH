@@ -17,14 +17,14 @@ if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'user') {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>BIRO HUKUM INFORMATION CENTER</title>
-    <link rel="icon" type="image/x-icon" href="assets/jateng.png" />
+    <link rel="icon" type="image/x-icon" href="../assets/jateng.png" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed bg-dash">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: rgba(255, 255, 255, 0.7);">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color:  rgba(255, 255, 255, 0.7);">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-dark" href="user.php">BIRO HUKUM INFORMATION CENTER</a>
         <!-- Sidebar Toggle-->
@@ -42,7 +42,7 @@ if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'user') {
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="features/logout.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -51,55 +51,57 @@ if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'user') {
         <main class="margin-fil">
             <div class="row justify-content-between">
                 <div class="col-2 my-2 d-flex justify-content-center">
-                    <img src="assets/jateng.png" class="logo-jat" alt="logo_jateng">
+                    <img src="../assets/jateng.png" class="logo-jat" alt="logo_jateng">
                 </div>
                 <div class="col-4 d-flex justify-content-center mt-4">
                     <div>
-                        <h1 class="text-white fs-">Rapat</h1>
+                        <h1 class="text-white fs-1">Agenda Ajuan</h1>
                     </div>
                 </div>
                 <div class=" col-2 my-2 d-flex justify-content-center mt-4">
-                    <img src="assets/img/logo1.png" class="logo-jdih" alt="logo_jateng">
+                    <img src="../assets/img/logo1.png" class="logo-jdih" alt="logo_jateng">
                 </div>
             </div>
             <div class="mx-5">
                 <div class="pb-2 mb-4 bg-tbl rounded">
-                    <?php include 'features/dom/tbl-rapat.php'; ?>
+                    <?php include 'dom/tbl-agendaA.php'; ?>
                 </div>
-                <div class=" ms-3">
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #D6D6D6;">
-                            Kegiatan
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="features/surat_masuk.php">Surat Masuk</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="features/undangan.php">Undangan</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="features/agendaM.php">Agenda Masuk</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="features/agendaA.php">Agenda Ajuan</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="my-2">
-                        <button type="button" class="btn btn-light" href="user.php" style="background-color: #D6D6D6;">rapat</button>
-                    </div>
+            </div>
+            <div class=" ms-3">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #D6D6D6;">
+                        Kegiatan
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="surat_masuk.php">Surat Masuk</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="undangan.php">Undangan </a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="agendaM.php">Agenda Masuk</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Agenda Ajuan</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                    </ul>
                 </div>
+                <div class="my-2">
+                    <a type="button" class="btn btn-light" href="../user.php" style="background-color: #D6D6D6;">rapat</a>
+                </div>
+
             </div>
         </main>
     </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../js/scripts.js"></script>
+
 </body>
 
 </html>

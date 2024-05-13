@@ -17,10 +17,11 @@ $total_row = mysqli_fetch_assoc($total_result);
 $total_items = $total_row['total'];
 $total_pages = ceil($total_items / $items_per_page);
 
-echo '<div >';
+echo '<div class="table-responsive">';
 if ($hasil && mysqli_num_rows($hasil) > 0) {
-    echo '<table class="table">';
-    echo '<thead class = "bg-thead">';
+
+    echo '<table class="table mt-1">';
+    echo '<thead class = "bg-thead ">';
     echo '  <tr>';
     echo '    <th>NO RAPAT</th>';
     echo '    <th>NAMA RAPAT</th>';

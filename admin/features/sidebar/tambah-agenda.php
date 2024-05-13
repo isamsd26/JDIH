@@ -102,11 +102,7 @@
                                     Tambahkan Agenda
                                 </div>
                             </div>
-                            <div class="card-body bg-tbl ">
-                                <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="no_surat">Nomor Surat :</label>
-                                    <input class="col-10" type="text" id="no_surat" name="no_surat">
-                                </div>
+                            <form class="card-body bg-tbl" method="POST" action="../action/simpan_agenda.php">
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="alamat_pengirim">Alamat Pengirim :</label>
                                     <input class="col-10" type="text" id="alamat_pengirim" name="alamat_pengirim">
@@ -114,6 +110,10 @@
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="tanggal_surat">Tanggal Surat :</label>
                                     <input class="col-10" type="date" id="tanggal_surat" name="tanggal_surat">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="nomor_surat">Nomor Surat :</label>
+                                    <input class="col-10" type="text" id="nomor_surat" name="nomor_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="perihal">Perihal :</label>
@@ -127,14 +127,10 @@
                                     <label class="col-2 text-end" for="isi_disposisi">Isi Disposisi :</label>
                                     <input class="col-10" type="text" id="isi_disposisi" name="isi_disposisi">
                                 </div>
-                                <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="keterangan">Keterangan :</label>
-                                    <input class="col-10" type="text" id="keterangan" name="keterangan">
-                                </div>
                                 <div class="d-flex justify-content-end me-3">
                                     <button type="submit" class="btn btn-warning">Simpan</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 

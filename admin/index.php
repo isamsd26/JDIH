@@ -107,13 +107,13 @@
                         <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
                     </ol>
                 </div>
-                <div class="row mx-0">
-                    <div class="col-2 ms-3">
+                <div class="row mx-0 ">
+                    <div class="col-4 ">
                         <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 Rapat / Kegiatan
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item" href="features/rapat.php">Rapat</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -122,19 +122,21 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col me-5">
+                    <div class="col-7 ">
                         <div class="card mb-4">
-                            <div class="card-header bg-tbl d-flex justify-content-between align-items-center">
+                            <div class="card-header bg-tbl d-flex justify-content-center align-items-center">
                                 <div>
-                                    <i class="fas fa-table me-1"></i>
-                                    Pilih kegiatan untuk dipilih
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-light">Tambah Kegiatan<i class="fa-solid fa-plus ms-2" style="color: #0d0d0d;"></i></button>
+                                    <h1> Tindakan Terbaru</h1>
                                 </div>
                             </div>
                             <div class="card-body bg-tbl">
-                                <?php include 'features/dom/tbl-keg.php'; ?>
+                                <h3 class="fw-bold">
+                                    Tindakan Saya
+                                </h3>
+                                <div>
+                                    <i class="fa-solid fa-plus" style="color: #035efc;"></i>
+                                    membahas project
+                                </div>
                             </div>
                         </div>
                     </div>

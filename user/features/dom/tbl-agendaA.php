@@ -6,7 +6,7 @@ if (mysqli_ping($koneksi)) {
     $limit = 5; // Jumlah data per halaman
     $page = isset($_GET['page']) ? $_GET['page'] : 1; // Halaman saat ini
     $start = ($page - 1) * $limit; // Perhitungan offset data
-    $query = "SELECT id_surat, alamat_pengirim, tanggal_surat, nomor_surat, perihal, alamat_tujuan, isi_disposisi, keterangan FROM surat_masuk LIMIT $start, $limit";
+    $query = "SELECT no_id,alamat_pengirim,tanggal_surat,nomor_surat,perihal,tanggal_naik,tanggal_turun,alamat_tujuan,isi_disposisi	 FROM agenda_ajuan LIMIT $start, $limit";
     $hasil = mysqli_query($koneksi, $query);
 
     echo '<div class="table-responsive">';
@@ -18,6 +18,8 @@ if (mysqli_ping($koneksi)) {
                 <th>Alamat Pengirim</th>
                 <th>Tanggal Surat</th>
                 <th>Nomor Surat</th>
+                <th>Tanggal Naik</th>
+                <th>Tanggal Turun</th>
                 <th>Perihal</th>
                 <th>Alamat Tujuan</th>
                 <th>Isi Disposisi</th>
@@ -28,10 +30,12 @@ if (mysqli_ping($koneksi)) {
         $no = 1;
         while ($row = mysqli_fetch_assoc($hasil)) {
             echo "<tr>
-                    <td>{$row['id_surat']}</td>
+                    <td>{$row['no_id']}</td>
                     <td>{$row['alamat_pengirim']}</td>
                     <td>{$row['tanggal_surat']}</td>
                     <td>{$row['nomor_surat']}</td>
+                    <td>{$row['tanggal_naik']}</td>
+                    <td>{$row['tanggal_turun']}</td>
                     <td>{$row['perihal']}</td>
                     <td>{$row['alamat_tujuan']}</td>
                     <td>{$row['isi_disposisi']}</td>
@@ -43,7 +47,7 @@ if (mysqli_ping($koneksi)) {
         echo '</table>';
 
         // Pagination links
-        $query_total = "SELECT COUNT(*) AS total FROM surat_masuk";
+        $query_total = "SELECT COUNT(*) AS total FROM agenda_ajuan";
         $result_total = mysqli_query($koneksi, $query_total);
         $data_total = mysqli_fetch_assoc($result_total);
         $total_pages = ceil($data_total['total'] / $limit);
@@ -51,16 +55,16 @@ if (mysqli_ping($koneksi)) {
         echo '<nav aria-label="Page navigation">';
         echo '  <ul class="pagination justify-content-center">';
         if ($page > 1) {
-            echo "    <li class='page-item'><a class='page-link' href='surat_masuk.php?page=" . ($page - 1) . "'>Previous</a></li>";
+            echo "    <li class='page-item'><a class='page-link' href='agendaA.php?page=" . ($page - 1) . "'>Previous</a></li>";
         } else {
             echo "    <li class='page-item disabled'><a class='page-link'>Previous</a></li>";
         }
         for ($i = 1; $i <= $total_pages; $i++) {
             $active = ($i === $page) ? 'active' : '';
-            echo "    <li class='page-item $active'><a class='page-link' href='surat_masuk.php?page=$i'>$i</a></li>";
+            echo "    <li class='page-item $active'><a class='page-link' href='agendaA.php?page=$i'>$i</a></li>";
         }
         if ($page < $total_pages) {
-            echo "    <li class='page-item'><a class='page-link' href='surat_masuk.php?page=" . ($page + 1) . "'>Next</a></li>";
+            echo "    <li class='page-item'><a class='page-link' href='agendaA.php?page=" . ($page + 1) . "'>Next</a></li>";
         } else {
             echo "    <li class='page-item disabled'><a class='page-link'>Next</a></li>";
         }
