@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Bulan Mei 2024 pada 18.02
+-- Waktu pembuatan: 14 Bulan Mei 2024 pada 16.28
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -45,7 +45,9 @@ CREATE TABLE `agenda_ajuan` (
 
 INSERT INTO `agenda_ajuan` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_surat`, `tanggal_naik`, `tanggal_turun`, `perihal`, `alamat_tujuan`, `isi_disposisi`) VALUES
 (1, 'Alamat Pengirim 5', '2024-05-19', 'NA001', '2024-06-10', '2024-06-15', 'Perihal Agenda Ajuan 1', 'Alamat Tujuan 1', 'Isi Disposisi 1'),
-(2, 'Alamat Pengirim 6', '2024-05-20', 'NA002', '2024-06-12', '2024-06-17', 'Perihal Agenda Ajuan 2', 'Alamat Tujuan 2', 'Isi Disposisi 2');
+(2, 'Alamat Pengirim 6', '2024-05-20', 'NA002', '2024-06-12', '2024-06-17', 'Perihal Agenda Ajuan 2', 'Alamat Tujuan 2', 'Isi Disposisi 2'),
+(3, 'semarang', '2024-05-14', 'N2013', '2024-05-14', '2024-05-15', 'rapat penting', 'kantor daerah', 'isi disposisi 2'),
+(6, 'salatiga', '2024-05-16', 'n2024', '2024-05-14', '2024-05-15', 'rapat penting', 'kantor daerah', 'isi disposisi 2');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,8 @@ CREATE TABLE `agenda_masuk` (
 INSERT INTO `agenda_masuk` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_surat`, `perihal`, `alamat_tujuan`, `isi_disposisi`) VALUES
 (1, 'Alamat Pengirim 3', '2024-05-17', 'NA001', 'Perihal Agenda Masuk 1', 'Alamat Tujuan 1', 'Isi Disposisi 1'),
 (2, 'Alamat Pengirim 4', '2024-05-18', 'NA002', 'Perihal Agenda Masuk 2', 'Alamat Tujuan 2', 'Isi Disposisi 2'),
-(3, 'tegal sari', '2024-05-14', 'N2013', 'rapat penting', 'kantor daerah', 'isi disposisi');
+(3, 'tegal sari', '2024-05-14', 'N2013', 'rapat penting', 'kantor daerah', 'isi disposisi'),
+(4, 'slawi', '2024-05-19', 'N002', 'rapat penting', 'kantor daerah', 'isi disposisi');
 
 -- --------------------------------------------------------
 
@@ -126,7 +129,10 @@ INSERT INTO `rapat` (`id_rapat`, `nama_rapat`, `tanggal_rapat`, `waktu_rapat`, `
 (9, 'rapat penting', '2024-05-07', '15:15:00', 'tempat 2', NULL),
 (10, 'rapat penting', '2024-05-07', '13:15:00', 'tempat 2', NULL),
 (11, 'rapat penting', '2024-05-07', '15:20:00', 'tempat 1', NULL),
-(12, 'rapat penting', '2024-05-14', '22:00:00', 'tempat 2', NULL);
+(12, 'rapat penting', '2024-05-14', '22:00:00', 'tempat 2', NULL),
+(13, 'rapat dana daaerah', '2024-05-15', '14:00:00', 'tempat 2', NULL),
+(14, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL),
+(15, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL);
 
 -- --------------------------------------------------------
 
@@ -180,6 +186,28 @@ INSERT INTO `surat_masuk` (`id_surat`, `alamat_pengirim`, `tanggal_surat`, `nomo
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tindakan`
+--
+
+CREATE TABLE `tindakan` (
+  `id` int(11) NOT NULL,
+  `jenis` varchar(50) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `tanggal` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tindakan`
+--
+
+INSERT INTO `tindakan` (`id`, `jenis`, `deskripsi`, `tanggal`) VALUES
+(1, 'rapat', 'berhasil menambahkan rapat', '2024-05-14 10:57:37'),
+(2, 'Agenda Masuk', 'Menambahkan agenda masuk: N002', '2024-05-14 16:39:03'),
+(3, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-14 16:51:21');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `undangan`
 --
 
@@ -203,7 +231,8 @@ INSERT INTO `undangan` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_sura
 (1, 'Alamat Pengirim 1', '2024-05-15', 'NS001', 'Perihal Undangan 1', '2024-06-01', 'Tempat Undangan 1', 'Tujuan Undangan 1', 'Isi Disposisi 1'),
 (2, 'Alamat Pengirim 2', '2024-05-16', 'NS002', 'Perihal Undangan 2', '2024-06-02', 'Tempat Undangan 2', 'Tujuan Undangan 2', 'Isi Disposisi 2'),
 (3, 'tegal sari', '2024-05-13', 'N2012', 'rapat penting', '2024-05-14', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi'),
-(4, 'tegal sari', '2024-05-13', 'N2013', 'rapat penting', '2024-05-16', 'Tempat Rapat 1', 'seluruh anggota', 'isi disposisi');
+(4, 'tegal sari', '2024-05-13', 'N2013', 'rapat penting', '2024-05-16', 'Tempat Rapat 1', 'seluruh anggota', 'isi disposisi'),
+(5, 'slawi', '2024-05-16', 'S001', 'rapat penting', '2024-05-18', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2');
 
 -- --------------------------------------------------------
 
@@ -269,6 +298,12 @@ ALTER TABLE `surat_masuk`
   ADD PRIMARY KEY (`id_surat`);
 
 --
+-- Indeks untuk tabel `tindakan`
+--
+ALTER TABLE `tindakan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `undangan`
 --
 ALTER TABLE `undangan`
@@ -290,13 +325,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `agenda_ajuan`
 --
 ALTER TABLE `agenda_ajuan`
-  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `agenda_masuk`
 --
 ALTER TABLE `agenda_masuk`
-  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
@@ -308,7 +343,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
@@ -323,10 +358,16 @@ ALTER TABLE `surat_masuk`
   MODIFY `id_surat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT untuk tabel `tindakan`
+--
+ALTER TABLE `tindakan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `undangan`
 --
 ALTER TABLE `undangan`
-  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
