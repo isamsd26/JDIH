@@ -1,4 +1,3 @@
-<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,19 +13,8 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<body class="sb-nav-fixed">
-    <?php 
-        if(isset($_SESSION['status'])){
-            ?>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                 <?php echo $_SESSION['status']; ?>
-                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                 </div>
-            <?php
-                unset($_SESSION['status']);
-        }
-    ?>
 
+<body class="sb-nav-fixed bg-dash">
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633;">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-dark" href="index.html">BIRO HUKUM INFORMATION CENTER</a>
@@ -45,7 +33,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../features/login.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -68,11 +56,16 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#"> Tagihan Iuran</a>
-                                <a class="nav-link" href="#">Slip gaji pelatih</a>
-                                <a class="nav-link" href="#">Pengumuman pertandingan</a>
-                                <a class="nav-link" href="#">Berita</a>
-                                <a class="nav-link" href="#">Jadwal game</a>
+                                <a class="nav-link text-dark" href="sidebar/side-rapat.php"> Tambah Rapat</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="sidebar/tambah-surat.php">Tambah Surat</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="sidebar/tambah-undangan.php">Tambah Undangan</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="sidebar/tambah-agenda.php">Tambah Agenda</a>
+                                <hr class="mb-0">
+                                <a class="nav-link text-dark" href="sidebar/tambah-agenda-aju.php">Tambah Agenda Ajuan</a>
+                                <hr class="mb-0">
                             </nav>
                         </div>
 
@@ -86,51 +79,53 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4 mb-4">
-                    <h1 class="mt-4">Pusat Agenda</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
-                    </ol>
+                <h1 class="my-4 text-center ">Agenda Ajuan</h1>
+                <div class="row mx-0 ms-3">
+                    <div class="col-2 ">
+                        <div class="dropdown">
+                            <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kegiatan
+                            </button>
+                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="surat_masuk.php">Surat Masuk</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="undangan.php">Undangan </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="agendaM.php">Agenda Masuk</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Agenda Ajuan</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="my-2">
+                            <a type="button" class="btn btn-warning w-100" href="rapat.php">rapat</a>
+                        </div>
+                    </div>
+                    <div class="col me-5">
+                        <div class="card mb-4">
+                            <div class="card-body bg-tbl">
+                                <?php include 'dom/tbl-agendaA.php'; ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-    <h3> Tambah Barang </h3>
+            </main>
 
-    <form action="koneksi.php" method="POST">
-        <table>
-            <tr>
-                <td> Alamat Pengirim </td>
-                <td> <input type="text" name="alamat_pengirim"> </td>
-            </tr>
-            <tr>
-                <td> Tanggal Surat </td>
-                <td> <input type="date" name="tanggal_surat"> </td>
-            </tr>
-            <tr>
-                <td> Nomor Surat </td>
-                <td> <input type="text" name="nomor_surat"> </td>
-            </tr>
-            <tr>
-                <td> Perihal </td>
-                <td> <input type="text" name="perihal"> </td>
-            </tr>
-            <tr>
-                <td> Alamat tujuan </td>
-                <td> <input type="text" name="alamat_tujuan"> </td>
-            </tr>
-            <tr>
-                <td> Isi Disposisi </td>
-                <td> <input type="text" name="isi_disposisi"> </td>
-            </tr>
-            <tr>
-                <td> Keterangan </td>
-                <td> <input type="text" name="keterangan"> </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" name="save" class="btn btn-primary" value="Simpan"> </td>
-            </tr>
-        </table>
-    </form>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../js/scripts.js"></script>
+
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
+
 </html>

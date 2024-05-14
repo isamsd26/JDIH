@@ -127,8 +127,19 @@ body {
   background-image: url('../assets/img/candi1.jpeg');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+}
+.bg-over{
+  display: -webkit-box; /* Menggunakan box layout */
+  -webkit-box-orient: vertical; /* Mengatur orientasi box secara vertikal */
+  overflow-y: auto; /* Menambahkan scroll vertikal jika diperlukan */
+  max-height: 100vh; /* Menentukan tinggi maksimum elemen, bisa diubah sesuai kebutuhan */
+  width: 100%; /* Menentukan lebar elemen */
+  background-color: #f0f0f0; /* Warna latar belakang, opsional */
+  padding: 1em; /* Padding untuk estetika, opsional */
+  box-sizing: border-box;
 }
 hr {
   margin: 1rem 0;
@@ -700,6 +711,7 @@ progress {
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+  max-height: 100%;
 }
 .row > * {
   flex-shrink: 0;
@@ -1142,6 +1154,7 @@ progress {
   .col-md-5 {
     flex: 0 0 auto;
     width: 41.66666667%;
+    max-height: 100%;
   }
   .col-md-6 {
     flex: 0 0 auto;
@@ -4249,21 +4262,36 @@ textarea.form-control-lg {
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
 }
-
+@media (max-width: 500px){
+  .size-card{
+    max-height: 350px;
+  }
+}
 @media (max-width: 450px) {
   .card-body {
     max-width: 100%;
     overflow-x: auto;
   }
   .card-header .fas {
-    font-size: 1.2rem; /* Mengurangi ukuran ikon */
+    font-size: 1.2rem; 
   }
-
   .card-header div {
-    font-size: 0.9rem; /* Mengurangi ukuran teks */
+    font-size: 0.9rem; 
+  }
+  .bg-dash{
+    height: auto;
+    max-width: 450px;
+  }
+  .size-card{
+    max-height: 350px;
+  }
+  .margin-fil {
+    height: auto; 
+  }
+  .row {
+    max-height: none; 
   }
 }
-
 .card-title {
   margin-bottom: var(--bs-card-title-spacer-y);
 }
@@ -11310,4 +11338,11 @@ body {
 .btn-light{
   max-width: 100%;
   width: 190px;
+}
+.dropdown .dropdown-menu {
+ max-width: 100%;
+ width: 190px;
+}
+.margin-fil{
+  margin-top: 100px;
 }

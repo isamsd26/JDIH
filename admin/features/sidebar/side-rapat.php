@@ -98,27 +98,34 @@ session_start();
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            <main>
-
-                <div class="container-fluid px-4 mb-4">
-                    <h1 class="mt-4">Pusat Agenda</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
-                    </ol>
-                </div>
+            <main class="margin-fil">
                 <div class="row mx-0">
                     <div class="col-2 ms-3">
                         <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Rapat / Kegiatan
+                            <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kegiatan
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="../rapat.php">Rapat</a></li>
+                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="../dom/surat_masuk.php">Surat Masuk</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../../index.php">Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="../dom/undangan.php">Undangan </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../dom/agendaM.php">Agenda Masuk</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../dom/agendaA.php">Agenda Ajuan</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                             </ul>
+                        </div>
+                        <div class="my-2">
+                            <a type="button" class="btn btn-warning w-100" href="../rapat.php">rapat</a>
                         </div>
                     </div>
                     <div class="col me-5">
@@ -129,10 +136,6 @@ session_start();
                                 </div>
                             </div>
                             <form class="card-body bg-tbl" method="post" action="../action/simpan_rapat.php">
-                                <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="id_rapat">ID Rapat :</label>
-                                    <input class="col-10" type="text" id="id_rapat" name="id_rapat">
-                                </div>
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="nama_rapat">Nama Rapat :</label>
                                     <input class="col-10" type="text" id="nama_rapat" name="nama_rapat">
@@ -160,19 +163,6 @@ session_start();
             </main>
 
         </div>
-
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

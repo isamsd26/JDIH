@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Bulan Mei 2024 pada 06.38
+-- Waktu pembuatan: 13 Bulan Mei 2024 pada 18.02
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -20,6 +20,57 @@ SET time_zone = "+00:00";
 --
 -- Database: `jdih`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `agenda_ajuan`
+--
+
+CREATE TABLE `agenda_ajuan` (
+  `no_id` int(11) NOT NULL,
+  `alamat_pengirim` varchar(255) DEFAULT NULL,
+  `tanggal_surat` date DEFAULT NULL,
+  `nomor_surat` varchar(50) DEFAULT NULL,
+  `tanggal_naik` date DEFAULT NULL,
+  `tanggal_turun` date DEFAULT NULL,
+  `perihal` varchar(255) DEFAULT NULL,
+  `alamat_tujuan` varchar(255) DEFAULT NULL,
+  `isi_disposisi` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `agenda_ajuan`
+--
+
+INSERT INTO `agenda_ajuan` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_surat`, `tanggal_naik`, `tanggal_turun`, `perihal`, `alamat_tujuan`, `isi_disposisi`) VALUES
+(1, 'Alamat Pengirim 5', '2024-05-19', 'NA001', '2024-06-10', '2024-06-15', 'Perihal Agenda Ajuan 1', 'Alamat Tujuan 1', 'Isi Disposisi 1'),
+(2, 'Alamat Pengirim 6', '2024-05-20', 'NA002', '2024-06-12', '2024-06-17', 'Perihal Agenda Ajuan 2', 'Alamat Tujuan 2', 'Isi Disposisi 2');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `agenda_masuk`
+--
+
+CREATE TABLE `agenda_masuk` (
+  `no_id` int(11) NOT NULL,
+  `alamat_pengirim` varchar(255) DEFAULT NULL,
+  `tanggal_surat` date DEFAULT NULL,
+  `nomor_surat` varchar(50) DEFAULT NULL,
+  `perihal` varchar(255) DEFAULT NULL,
+  `alamat_tujuan` varchar(255) DEFAULT NULL,
+  `isi_disposisi` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `agenda_masuk`
+--
+
+INSERT INTO `agenda_masuk` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_surat`, `perihal`, `alamat_tujuan`, `isi_disposisi`) VALUES
+(1, 'Alamat Pengirim 3', '2024-05-17', 'NA001', 'Perihal Agenda Masuk 1', 'Alamat Tujuan 1', 'Isi Disposisi 1'),
+(2, 'Alamat Pengirim 4', '2024-05-18', 'NA002', 'Perihal Agenda Masuk 2', 'Alamat Tujuan 2', 'Isi Disposisi 2'),
+(3, 'tegal sari', '2024-05-14', 'N2013', 'rapat penting', 'kantor daerah', 'isi disposisi');
 
 -- --------------------------------------------------------
 
@@ -74,7 +125,8 @@ INSERT INTO `rapat` (`id_rapat`, `nama_rapat`, `tanggal_rapat`, `waktu_rapat`, `
 (8, 'rapat penting', '2024-05-07', '12:14:00', 'tempat 2', NULL),
 (9, 'rapat penting', '2024-05-07', '15:15:00', 'tempat 2', NULL),
 (10, 'rapat penting', '2024-05-07', '13:15:00', 'tempat 2', NULL),
-(11, 'rapat penting', '2024-05-07', '15:20:00', 'tempat 1', NULL);
+(11, 'rapat penting', '2024-05-07', '15:20:00', 'tempat 1', NULL),
+(12, 'rapat penting', '2024-05-14', '22:00:00', 'tempat 2', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +170,40 @@ CREATE TABLE `surat_masuk` (
 --
 
 INSERT INTO `surat_masuk` (`id_surat`, `alamat_pengirim`, `tanggal_surat`, `nomor_surat`, `perihal`, `alamat_tujuan`, `isi_disposisi`, `keterangan`) VALUES
-(2, 'dshnfkjid', '2024-04-02', 'asde/123/j', 'apa aja', 'salatiga', 'isi aja', 'apapun');
+(1, 'dshnfkjid', '2024-04-02', 'asde/123/j', 'apa aja', 'salatiga', 'isi aja', 'apapun'),
+(2, 'tegal sari', '2024-05-13', '212', 'rapat penting', 'kantor pusat', 'isi disposisi', ''),
+(3, 'tegal sari', '2024-05-13', '212', 'jalan jalan', 'kantor daerah', 'isi disposisi', ''),
+(4, 'tegal sari', '2024-05-13', '213', 'jalan jalan', 'kantor daerah', 'isi disposisi', ''),
+(5, 'tegal sari', '2024-05-13', '213', 'jalan jalan', 'kantor daerah', 'isi disposisi', ''),
+(6, 'keraton', '2024-05-14', '214', 'jalan jalan', 'kantor daerah', 'isi disposisi', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `undangan`
+--
+
+CREATE TABLE `undangan` (
+  `no_id` int(11) NOT NULL,
+  `alamat_pengirim` varchar(255) DEFAULT NULL,
+  `tanggal_surat` date DEFAULT NULL,
+  `nomor_surat` varchar(50) DEFAULT NULL,
+  `perihal` varchar(255) DEFAULT NULL,
+  `tanggal_pelaksanaan` date DEFAULT NULL,
+  `tempat` varchar(255) DEFAULT NULL,
+  `tujuan` varchar(255) DEFAULT NULL,
+  `isi_disposisi` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `undangan`
+--
+
+INSERT INTO `undangan` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_surat`, `perihal`, `tanggal_pelaksanaan`, `tempat`, `tujuan`, `isi_disposisi`) VALUES
+(1, 'Alamat Pengirim 1', '2024-05-15', 'NS001', 'Perihal Undangan 1', '2024-06-01', 'Tempat Undangan 1', 'Tujuan Undangan 1', 'Isi Disposisi 1'),
+(2, 'Alamat Pengirim 2', '2024-05-16', 'NS002', 'Perihal Undangan 2', '2024-06-02', 'Tempat Undangan 2', 'Tujuan Undangan 2', 'Isi Disposisi 2'),
+(3, 'tegal sari', '2024-05-13', 'N2012', 'rapat penting', '2024-05-14', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi'),
+(4, 'tegal sari', '2024-05-13', 'N2013', 'rapat penting', '2024-05-16', 'Tempat Rapat 1', 'seluruh anggota', 'isi disposisi');
 
 -- --------------------------------------------------------
 
@@ -148,6 +233,18 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `role_id`) VALUES
 --
 
 --
+-- Indeks untuk tabel `agenda_ajuan`
+--
+ALTER TABLE `agenda_ajuan`
+  ADD PRIMARY KEY (`no_id`);
+
+--
+-- Indeks untuk tabel `agenda_masuk`
+--
+ALTER TABLE `agenda_masuk`
+  ADD PRIMARY KEY (`no_id`);
+
+--
 -- Indeks untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
@@ -172,6 +269,12 @@ ALTER TABLE `surat_masuk`
   ADD PRIMARY KEY (`id_surat`);
 
 --
+-- Indeks untuk tabel `undangan`
+--
+ALTER TABLE `undangan`
+  ADD PRIMARY KEY (`no_id`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -184,6 +287,18 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `agenda_ajuan`
+--
+ALTER TABLE `agenda_ajuan`
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `agenda_masuk`
+--
+ALTER TABLE `agenda_masuk`
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
@@ -193,7 +308,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
@@ -205,7 +320,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT untuk tabel `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_surat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_surat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `undangan`
+--
+ALTER TABLE `undangan`
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

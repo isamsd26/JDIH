@@ -5,8 +5,10 @@ $items_per_page = 5;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $items_per_page;
 
+// Query untuk mendapatkan rapat dengan urutan dari yang terbaru
 $query = "SELECT id_rapat, nama_rapat, tanggal_rapat, waktu_rapat, tempat_rapat, hadir 
           FROM rapat 
+          ORDER BY tanggal_rapat DESC, waktu_rapat DESC 
           LIMIT $items_per_page OFFSET $offset";
 
 $hasil = mysqli_query($koneksi, $query);
@@ -27,20 +29,23 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
     echo '    <th>TANGGAL RAPAT</th>';
     echo '    <th>WAKTU RAPAT</th>';
     echo '    <th>TEMPAT RAPAT</th>';
-    echo '    <th>HADIR</a></th>';
+    echo '    <th>HADIR</th>';
     echo '  </tr>';
     echo '</thead>';
     echo '<tbody>';
 
+    $no_rapat = $offset + 1; // Mengatur nomor rapat awal berdasarkan halaman
+
     while ($row = mysqli_fetch_assoc($hasil)) {
         echo '<tr>';
-        echo "  <th>{$row['id_rapat']}</th>";
+        echo "  <th>{$no_rapat}</th>";
         echo "  <td>{$row['nama_rapat']}</td>";
         echo "  <td>{$row['tanggal_rapat']}</td>";
         echo "  <td>{$row['waktu_rapat']}</td>";
         echo "  <td>{$row['tempat_rapat']}</td>";
         echo "  <td>" . ($row['hadir'] ? 'Ya' : 'Tidak') . "</td>";
         echo '</tr>';
+        $no_rapat++; // Menambah nomor rapat untuk baris berikutnya
     }
 
     echo '</tbody>';

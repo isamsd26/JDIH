@@ -1,3 +1,7 @@
+<?php
+include 'features/action/function.php';
+$actions = getLatestActions($koneksi);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="sb-nav-fixed bg-dash">
+<body class="sb-nav-fixed ">
     <?php
     session_start();
 
@@ -60,105 +64,113 @@
             </li>
         </ul>
     </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion" id="sidenavAccordion" style="background-color: #FAE633;">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link text-dark" href="index.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-                        <hr class="mb-0">
-                        <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-book-open"></i></div>
-                            Form
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link text-dark" href="features/sidebar/side-rapat.php"> Tambah Rapat</a>
-                                <hr class="mb-0">
-                                <a class="nav-link text-dark" href="features/sidebar/tambah-surat.php">Tambah Surat</a>
-                                <hr class="mb-0">
-                                <a class="nav-link text-dark" href="features/sidebar/tambah-undangan.php">Tambah Undangan</a>
-                                <hr class="mb-0">
-                                <a class="nav-link text-dark" href="features/sidebar/tambah-agenda.php">Tambah Agenda</a>
-                                <hr class="mb-0">
-                                <a class="nav-link text-dark" href="features/sidebar/tambah-agenda-aju.php">Tambah Agenda Ajuan</a>
-                                <hr class="mb-0">
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Admin
-                </div>
-            </nav>
-        </div>
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4 mb-4">
-                    <h1 class="mt-4">Pusat Agenda</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
-                    </ol>
-                </div>
-                <div class="row mx-0 ">
-                    <div class="col-4 ">
-                        <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Rapat / Kegiatan
-                            </button>
-                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="features/rapat.php">Rapat</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Kegiatan</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-7 ">
-                        <div class="card mb-4">
-                            <div class="card-header bg-tbl d-flex justify-content-center align-items-center">
-                                <div>
-                                    <h1> Tindakan Terbaru</h1>
-                                </div>
+    <section class="bg-dash">
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion" id="sidenavAccordion" style="background-color: #FAE633;">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Home</div>
+                            <a class="nav-link text-dark" href="index.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <hr class="mb-0">
+                            <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-book-open"></i></div>
+                                Form
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link text-dark" href="features/sidebar/side-rapat.php"> Tambah Rapat</a>
+                                    <hr class="mb-0">
+                                    <a class="nav-link text-dark" href="features/sidebar/tambah-surat.php">Tambah Surat</a>
+                                    <hr class="mb-0">
+                                    <a class="nav-link text-dark" href="features/sidebar/tambah-undangan.php">Tambah Undangan</a>
+                                    <hr class="mb-0">
+                                    <a class="nav-link text-dark" href="features/sidebar/tambah-agenda.php">Tambah Agenda</a>
+                                    <hr class="mb-0">
+                                    <a class="nav-link text-dark" href="features/sidebar/tambah-agenda-aju.php">Tambah Agenda Ajuan</a>
+                                    <hr class="mb-0">
+                                </nav>
                             </div>
-                            <div class="card-body bg-tbl">
-                                <h3 class="fw-bold">
-                                    Tindakan Saya
-                                </h3>
-                                <div>
-                                    <i class="fa-solid fa-plus" style="color: #035efc;"></i>
-                                    membahas project
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                </div>
-            </main>
-
-        </div>
-
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Admin
                     </div>
-                </div>
+                </nav>
             </div>
-        </footer>
-    </div>
-    </div>
+            <div id="layoutSidenav_content">
+                <?php
+                include 'features/action/function.php';
+                $actions = getLatestActions($koneksi);
+                ?>
+                <main>
+                    <div class=" row mx-0">
+                        <div class="container-fluid px-4 mb-4">
+                            <h1 class="mt-4">Pusat Agenda</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
+                            </ol>
+                        </div>
+                        <div class="col-4 ">
+                            <div class="dropdown">
+                                <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Kegiatan
+                                </button>
+                                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="features/surat_masuk.php">Surat Masuk</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="features/undangan.php">Undangan</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="features/agendaM.php">Agenda Masuk</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="features/agendaA.php">Agenda Ajuan</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="my-2">
+                                <a type="button" class="btn btn-warning w-100" href="features/rapat.php">rapat</a>
+                            </div>
+                        </div>
+                        <div class="col-7 ">
+                            <div class="card size-card mb-4">
+                                <div class="card-header bg-tbl d-flex justify-content-center align-items-center">
+                                    <div>
+                                        <h1> Tindakan Terbaru</h1>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-tbl">
+                                    <h3 class="fw-bold">
+                                        Tindakan Saya
+                                    </h3>
+                                    <div class="bg-over">
+                                        <?php foreach ($actions as $action) : ?>
+                                            <div>
+                                                <i class="fa-solid fa-plus" style="color: #035efc;"></i>
+                                                <?= htmlspecialchars($action['deskripsi']) ?> (<?= htmlspecialchars($action['jenis']) ?>, <?= htmlspecialchars($action['tanggal']) ?>)
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+    </section>
     <script>
         setTimeout(() => {
             const toast = document.getElementById('toast-notification');

@@ -79,14 +79,9 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4 mb-4">
-                    <h1 class="mt-4">Pusat Agenda</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Rapat dan Kegiatan</li>
-                    </ol>
-                </div>
-                <div class="row mx-0">
-                    <div class="col-2 ms-3">
+                <h1 class="my-4 text-center ">Surat Masuk</h1>
+                <div class="row mx-0 ms-3">
+                    <div class="col-2 ">
                         <div class="dropdown">
                             <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 Kegiatan
@@ -116,17 +111,8 @@
                     </div>
                     <div class="col me-5">
                         <div class="card mb-4">
-                            <div class="card-header bg-tbl d-flex justify-content-between align-items-center">
-                                <div>
-                                    <i class="fas fa-table me-1"></i>
-                                    Pilih rapat / kegiatan untuk dipilih
-                                </div>
-                                <div>
-                                    <a class="btn btn-light" href="sidebar/side-rapat.php">Tambah Rapat<i class="fa-solid fa-plus ms-2" style="color: #0d0d0d;"></i></a>
-                                </div>
-                            </div>
                             <div class="card-body bg-tbl">
-                                <?php include 'dom/tbl-rapat.php'; ?>
+                                <?php include 'dom/surat-masuk.php'; ?>
                             </div>
                         </div>
                     </div>

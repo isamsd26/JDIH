@@ -1,5 +1,6 @@
 <?php
 include_once '../dom/koneksi.php';
+include_once 'function.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['simpan'])) {
     $id_surat = $_POST['id_surat'];
@@ -15,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['simpan'])) {
                 VALUES ('$id_surat', '$alamat_pengirim', '$tanggal_surat', '$nomor_surat', '$perihal', '$alamat_tujuan', '$isi_disposisi', '$keterangan')";
 
     if (mysqli_query($koneksi, $query)) {
+        addTindakan($koneksi, 'Surat', "Menambahkan surat: $nomor_surat");
         header("Location: ../sidebar/tambah-surat.php?status=sukses");
         exit;
     } else {

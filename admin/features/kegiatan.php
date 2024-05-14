@@ -88,30 +88,16 @@
                 <div class="row mx-0">
                     <div class="col-2 ms-3">
                         <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Kegiatan
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Rapat / Kegiatan
                             </button>
-                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="surat_masuk.php">Surat Masuk</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Rapat</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="undangan.php">Undangan </a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="agendaM.php">Agenda Masuk</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="agendaA.php">Agenda Ajuan</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                                <li><a class="dropdown-item" href="../index.php">Kegiatan</a></li>
                             </ul>
-                        </div>
-                        <div class="my-2">
-                            <a type="button" class="btn btn-warning w-100" href="rapat.php">rapat</a>
                         </div>
                     </div>
                     <div class="col me-5">
@@ -122,11 +108,11 @@
                                     Pilih rapat / kegiatan untuk dipilih
                                 </div>
                                 <div>
-                                    <a class="btn btn-light" href="sidebar/side-rapat.php">Tambah Rapat<i class="fa-solid fa-plus ms-2" style="color: #0d0d0d;"></i></a>
+                                    <a class="btn btn-light" href="sidebar/side-rapat.php">Tambah Kegiatan<i class="fa-solid fa-plus ms-2" style="color: #0d0d0d;"></i></a>
                                 </div>
                             </div>
                             <div class="card-body bg-tbl">
-                                <?php include 'dom/tbl-rapat.php'; ?>
+                                <?php include 'dom/tbl-keg.php'; ?>
                             </div>
                         </div>
                     </div>

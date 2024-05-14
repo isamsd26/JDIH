@@ -1,8 +1,8 @@
 <?php
 include_once '../dom/koneksi.php';
+include_once 'function.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['simpan'])) {
-    $no_id = $_POST['no_id'];
     $alamat_pengirim = $_POST['alamat_pengirim'];
     $tanggal_surat = $_POST['tanggal_surat'];
     $nomor_surat = $_POST['nomor_surat'];
@@ -12,9 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['simpan'])) {
     $tujuan = $_POST['tujuan'];
     $isi_disposisi = $_POST['isi_disposisi'];
 
-    $query = "INSERT INTO undangan (no_id, alamat_pengirim, tanggal_surat, nomor_surat, perihal, tanggal_pelaksanaan, tempat, tujuan, isi_disposisi) 
-                VALUES ('$no_id', '$alamat_pengirim', '$tanggal_surat', '$nomor_surat', '$perihal', '$tanggal_pelaksanaan', '$tempat', '$tujuan', '$isi_disposisi')";
+    $query = "INSERT INTO undangan (alamat_pengirim, tanggal_surat, nomor_surat, perihal, tanggal_pelaksanaan, tempat, tujuan, isi_disposisi) 
+                VALUES ('$alamat_pengirim', '$tanggal_surat', '$nomor_surat', '$perihal', '$tanggal_pelaksanaan', '$tempat', '$tujuan', '$isi_disposisi')";
     if (mysqli_query($koneksi, $query)) {
+        addTindakan($koneksi, 'Undangan', "Menambahkan undangan: $nomor_surat");
         header("Location: ../sidebar/tambah-undangan.php?status=sukses");
         exit;
     } else {

@@ -38,6 +38,17 @@
             </li>
         </ul>
     </nav>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="statusToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <!-- Toast message will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion" id="sidenavAccordion" style="background-color: #FAE633;">
@@ -77,22 +88,36 @@
                 </div>
             </nav>
         </div>
+
         <div id="layoutSidenav_content">
             <main>
-
                 <div class="row mt-5 mx-0">
                     <div class="col-2 ms-3">
                         <div class="dropdown">
-                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Rapat / Kegiatan
+                            <button class="btn btn-warning dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Kegiatan
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="../rapat.php">Rapat</a></li>
+                            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="../dom/surat_masuk.php">Surat Masuk</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../../index.php">Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="../dom/undangan.php">Undangan </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../dom/agendaM.php">Agenda Masuk</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../dom/agendaA.php">Agenda Ajuan</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                             </ul>
+                        </div>
+                        <div class="my-2">
+                            <a type="button" class="btn btn-warning w-100" href="../rapat.php">rapat</a>
                         </div>
                     </div>
                     <div class="col me-5">
@@ -102,10 +127,10 @@
                                     Tambahkan Agenda Ajuan
                                 </div>
                             </div>
-                            <form class="card-body bg-tbl" method="POST" action="../action/simpan_agenda.php">
+                            <form class="card-body bg-tbl" method="POST" action="../action/simpan_agenda_aju.php">
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="no_surat">Nomor Surat :</label>
-                                    <input class="col-10" type="text" id="no_surat" name="no_surat">
+                                    <label class="col-2 text-end" for="nomor_surat">Nomor Surat :</label>
+                                    <input class="col-10" type="text" id="nomor_surat" name="nomor_surat">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="alamat_pengirim">Alamat Pengirim :</label>
@@ -114,6 +139,14 @@
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="tanggal_surat">Tanggal Surat :</label>
                                     <input class="col-10" type="date" id="tanggal_surat" name="tanggal_surat">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="tanggal_naik">Tanggal Naik :</label>
+                                    <input class="col-10" type="date" id="tanggal_naik" name="tanggal_naik">
+                                </div>
+                                <div class="form-group row mb-3 me-3">
+                                    <label class="col-2 text-end" for="tanggal_turun">Tanggal Turun :</label>
+                                    <input class="col-10" type="date" id="tanggal_turun" name="tanggal_turun">
                                 </div>
                                 <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="perihal">Perihal :</label>
@@ -138,24 +171,40 @@
             </main>
 
         </div>
+    </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the URL parameter 'status'
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
 
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    </div>
+            // Function to show toast
+            function showToast(message, isSuccess) {
+                const toastElement = document.getElementById('statusToast');
+                const toastBody = toastElement.querySelector('.toast-body');
+                toastBody.textContent = message;
+
+                if (isSuccess) {
+                    toastElement.classList.add('bg-success', 'text-white');
+                } else {
+                    toastElement.classList.add('bg-danger', 'text-white');
+                }
+
+                const toast = new bootstrap.Toast(toastElement);
+                toast.show();
+            }
+
+            // Check the status and show the corresponding toast message
+            if (status === 'sukses') {
+                showToast('Data agenda ajuan berhasil disimpan!', true);
+            } else if (status === 'gagal') {
+                showToast('Gagal menyimpan data agenda ajuan.', false);
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../../js/scripts.js"></script>
-
     <script src="../../js/datatables-simple-demo.js"></script>
 </body>
 

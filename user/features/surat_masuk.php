@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'user') {
-    header("Location: features/login.php");
+    header("Location: login.php");
     exit;
 }
 ?>
