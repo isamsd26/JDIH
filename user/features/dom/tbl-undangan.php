@@ -62,19 +62,19 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
 
     if ($page > 1) {
         $previous_page = $page - 1;
-        echo "    <li class='page-item'><a class='page-link' href='tbl-undangan.php?page=$previous_page'>Previous</a></li>";
+        echo "    <li class='page-item'><a class='page-link' href='undangan.php?page=$previous_page'>Previous</a></li>";
     } else {
         echo "    <li class='page-item disabled'><a class='page-link'>Previous</a></li>";
     }
 
     for ($i = 1; $i <= $total_pages; $i++) {
         $active = ($i === $page) ? 'active' : '';
-        echo "    <li class='page-item $active'><a class='page-link' href='tbl-undangan.php?page=$i'>$i</a></li>";
+        echo "    <li class='page-item $active'><a class='page-link' href='undangan.php?page=$i'>$i</a></li>";
     }
 
     if ($page < $total_pages) {
         $next_page = $page + 1;
-        echo "    <li class='page-item'><a class='page-link' href='tbl-undangan.php?page=$next_page'>Next</a></li>";
+        echo "    <li class='page-item'><a class='page-link' href='undangan.php?page=$next_page'>Next</a></li>";
     } else {
         echo "    <li class='page-item disabled'><a class='page-link'>Next</a></li>";
     }

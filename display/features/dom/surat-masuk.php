@@ -1,23 +1,36 @@
 <?php
 include 'koneksi.php';
 
+// Tentukan jumlah item per halaman
 $items_per_page = 5;
+// Ambil nomor halaman dari parameter URL, default ke halaman 1 jika tidak ada
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $items_per_page;
 
-// Query untuk mendapatkan agenda masuk dengan urutan dari yang terbaru
-$query = "SELECT no_id, alamat_pengirim, tanggal_surat, nomor_surat, perihal, alamat_tujuan, isi_disposisi 
-          FROM agenda_masuk 
+// Query untuk mendapatkan surat masuk dengan urutan dari yang terbaru
+$query = "SELECT id_surat, alamat_pengirim, tanggal_surat, nomor_surat, perihal, alamat_tujuan, isi_disposisi 
+          FROM surat_masuk 
           ORDER BY tanggal_surat DESC 
           LIMIT $items_per_page OFFSET $offset";
 
 $hasil = mysqli_query($koneksi, $query);
 
-$total_query = "SELECT COUNT(*) AS total FROM agenda_masuk";
+if (!$hasil) {
+    echo "Error: " . mysqli_error($koneksi);
+    exit();
+}
+
+// Query untuk mendapatkan total item
+$total_query = "SELECT COUNT(*) AS total FROM surat_masuk";
 $total_result = mysqli_query($koneksi, $total_query);
-$total_row = mysqli_fetch_assoc($total_result);
-$total_items = $total_row['total'];
-$total_pages = ceil($total_items / $items_per_page);
+if ($total_result) {
+    $total_row = mysqli_fetch_assoc($total_result);
+    $total_items = $total_row['total'];
+    $total_pages = ceil($total_items / $items_per_page);
+} else {
+    $total_items = 0;
+    $total_pages = 1;
+}
 
 echo '<div class="container">';
 if ($hasil && mysqli_num_rows($hasil) > 0) {
@@ -58,19 +71,19 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
 
     if ($page > 1) {
         $previous_page = $page - 1;
-        echo "    <li class='page-item'><a class='page-link' href='agendaM.php?page=$previous_page'>Previous</a></li>";
+        echo "    <li class='page-item'><a class='page-link' href='surat_masuk.php?page=$previous_page'>Previous</a></li>";
     } else {
         echo "    <li class='page-item disabled'><a class='page-link'>Previous</a></li>";
     }
 
     for ($i = 1; $i <= $total_pages; $i++) {
         $active = ($i === $page) ? 'active' : '';
-        echo "    <li class='page-item $active'><a class='page-link' href='agendaM.php?page=$i'>$i</a></li>";
+        echo "    <li class='page-item $active'><a class='page-link' href='surat_masuk.php?page=$i'>$i</a></li>";
     }
 
     if ($page < $total_pages) {
         $next_page = $page + 1;
-        echo "    <li class='page-item'><a class='page-link' href='agendaM.php?page=$next_page'>Next</a></li>";
+        echo "    <li class='page-item'><a class='page-link' href='surat_masuk.php?page=$next_page'>Next</a></li>";
     } else {
         echo "    <li class='page-item disabled'><a class='page-link'>Next</a></li>";
     }
@@ -78,6 +91,6 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
     echo '  </ul>';
     echo '</nav>';
 } else {
-    echo "Tidak ada data agenda masuk yang ditemukan.";
+    echo "Tidak ada data surat masuk yang ditemukan.";
 }
 echo '</div>';

@@ -145,6 +145,7 @@ $actions = getLatestActions($koneksi);
                                 <a type="button" class="btn btn-warning w-100" href="features/rapat.php">rapat</a>
                             </div>
                         </div>
+
                         <div class="col-7 ">
                             <div class="card size-card mb-4">
                                 <div class="card-header bg-tbl d-flex justify-content-center align-items-center">
@@ -157,13 +158,63 @@ $actions = getLatestActions($koneksi);
                                         Tindakan Saya
                                     </h3>
                                     <div class="bg-over">
-                                        <?php foreach ($actions as $action) : ?>
-                                            <div>
-                                                <i class="fa-solid fa-plus" style="color: #035efc;"></i>
-                                                <?= htmlspecialchars($action['deskripsi']) ?> (<?= htmlspecialchars($action['jenis']) ?>, <?= htmlspecialchars($action['tanggal']) ?>)
-                                            </div>
-                                        <?php endforeach; ?>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Deskripsi</th>
+                                                    <th>Jenis</th>
+                                                    <th>Tanggal</th>
+                                                </tr>
+                                            </thead>
+                                            <?php
+                                            include 'config/pagination.php';
+                                            ?>
+                                            <tbody>
+                                                <?php foreach ($actions as $action) : ?>
+                                                    <tr>
+                                                        <td><i class="fa-solid fa-plus" style="color: #035efc;"></i></td>
+                                                        <td><?= htmlspecialchars($action['deskripsi']) ?></td>
+                                                        <td><?= htmlspecialchars($action['jenis']) ?></td>
+                                                        <td><?= htmlspecialchars($action['tanggal']) ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-center mt-2">
+                                            <?php if ($page > 1) : ?>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="index.php?page=<?= $page - 1 ?>">Previous</a>
+                                                </li>
+                                            <?php else : ?>
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">Previous</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                                                <?php if ($i == $page) : ?>
+                                                    <li class="page-item active" aria-current="page">
+                                                        <a class="page-link" href="#"><?= $i ?></a>
+                                                    </li>
+                                                <?php else : ?>
+                                                    <li class="page-item"><a class="page-link" href="index.php?page=<?= $i ?>"><?= $i ?></a></li>
+                                                <?php endif; ?>
+                                            <?php endfor; ?>
+
+                                            <?php if ($page < $total_pages) : ?>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="index.php?page=<?= $page + 1 ?>">Next</a>
+                                                </li>
+                                            <?php else : ?>
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">Next</a>
+                                                </li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Bulan Mei 2024 pada 16.28
+-- Waktu pembuatan: 15 Bulan Mei 2024 pada 17.45
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -73,7 +73,8 @@ INSERT INTO `agenda_masuk` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_
 (1, 'Alamat Pengirim 3', '2024-05-17', 'NA001', 'Perihal Agenda Masuk 1', 'Alamat Tujuan 1', 'Isi Disposisi 1'),
 (2, 'Alamat Pengirim 4', '2024-05-18', 'NA002', 'Perihal Agenda Masuk 2', 'Alamat Tujuan 2', 'Isi Disposisi 2'),
 (3, 'tegal sari', '2024-05-14', 'N2013', 'rapat penting', 'kantor daerah', 'isi disposisi'),
-(4, 'slawi', '2024-05-19', 'N002', 'rapat penting', 'kantor daerah', 'isi disposisi');
+(4, 'slawi', '2024-05-19', 'N002', 'rapat penting', 'kantor daerah', 'isi disposisi'),
+(5, 'tegal sari', '2024-05-21', 'N2014', 'rapat penting', 'kantor daerah', 'isi disposisi 2');
 
 -- --------------------------------------------------------
 
@@ -132,7 +133,8 @@ INSERT INTO `rapat` (`id_rapat`, `nama_rapat`, `tanggal_rapat`, `waktu_rapat`, `
 (12, 'rapat penting', '2024-05-14', '22:00:00', 'tempat 2', NULL),
 (13, 'rapat dana daaerah', '2024-05-15', '14:00:00', 'tempat 2', NULL),
 (14, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL),
-(15, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL);
+(15, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL),
+(16, 'rapat penting', '2024-05-20', '13:00:00', 'tempat 2', NULL);
 
 -- --------------------------------------------------------
 
@@ -203,7 +205,10 @@ CREATE TABLE `tindakan` (
 INSERT INTO `tindakan` (`id`, `jenis`, `deskripsi`, `tanggal`) VALUES
 (1, 'rapat', 'berhasil menambahkan rapat', '2024-05-14 10:57:37'),
 (2, 'Agenda Masuk', 'Menambahkan agenda masuk: N002', '2024-05-14 16:39:03'),
-(3, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-14 16:51:21');
+(3, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-14 16:51:21'),
+(4, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-15 12:51:03'),
+(5, 'Agenda Masuk', 'Menambahkan agenda masuk: N2014', '2024-05-15 12:51:31'),
+(6, 'Undangan', 'Menambahkan undangan: n2023', '2024-05-15 12:56:29');
 
 -- --------------------------------------------------------
 
@@ -232,7 +237,8 @@ INSERT INTO `undangan` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_sura
 (2, 'Alamat Pengirim 2', '2024-05-16', 'NS002', 'Perihal Undangan 2', '2024-06-02', 'Tempat Undangan 2', 'Tujuan Undangan 2', 'Isi Disposisi 2'),
 (3, 'tegal sari', '2024-05-13', 'N2012', 'rapat penting', '2024-05-14', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi'),
 (4, 'tegal sari', '2024-05-13', 'N2013', 'rapat penting', '2024-05-16', 'Tempat Rapat 1', 'seluruh anggota', 'isi disposisi'),
-(5, 'slawi', '2024-05-16', 'S001', 'rapat penting', '2024-05-18', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2');
+(5, 'slawi', '2024-05-16', 'S001', 'rapat penting', '2024-05-18', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2'),
+(6, 'tegal sari', '2024-05-20', 'n2023', 'jalan jalan', '2024-05-21', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2');
 
 -- --------------------------------------------------------
 
@@ -331,7 +337,7 @@ ALTER TABLE `agenda_ajuan`
 -- AUTO_INCREMENT untuk tabel `agenda_masuk`
 --
 ALTER TABLE `agenda_masuk`
-  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
@@ -343,7 +349,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
@@ -361,13 +367,13 @@ ALTER TABLE `surat_masuk`
 -- AUTO_INCREMENT untuk tabel `tindakan`
 --
 ALTER TABLE `tindakan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `undangan`
 --
 ALTER TABLE `undangan`
-  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

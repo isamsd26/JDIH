@@ -11,7 +11,7 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>BIRO HUKUM INFORMATION CENTER</title>
-    <link rel="icon" type="image/x-icon" href="assets/jateng.png" />
+    <link rel="icon" type="image/x-icon" href="../../assets/jateng.png" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -52,13 +52,19 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
         </ul>
     </nav>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="statusToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast" id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <strong class="me-auto">Notifikasi</strong>
+                <small>Just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
             </div>
-            <div class="toast-body">
-                <!-- Toast message will be dynamically inserted here -->
+            <div class="toast-body" id="toast-body">
+                <?php
+                if (isset($_SESSION['pesan'])) {
+                    echo $_SESSION['pesan'];
+                    unset($_SESSION['pesan']);
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -185,6 +191,15 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../../js/scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toastEl = document.getElementById('myToast');
+            const toast = new bootstrap.Toast(toastEl);
+            if (document.getElementById('toast-body').innerHTML.trim()) {
+                toast.show();
+            }
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get the URL parameter 'status'

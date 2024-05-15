@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['simpan'])) {
     $query = "INSERT INTO undangan (alamat_pengirim, tanggal_surat, nomor_surat, perihal, tanggal_pelaksanaan, tempat, tujuan, isi_disposisi) 
                 VALUES ('$alamat_pengirim', '$tanggal_surat', '$nomor_surat', '$perihal', '$tanggal_pelaksanaan', '$tempat', '$tujuan', '$isi_disposisi')";
     if (mysqli_query($koneksi, $query)) {
+        $_SESSION['pesan'] = "Data undangan berhasil disimpan!";
         addTindakan($koneksi, 'Undangan', "Menambahkan undangan: $nomor_surat");
         header("Location: ../sidebar/tambah-undangan.php?status=sukses");
         exit;

@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['simpan'])) {
                 VALUES ('$id_surat', '$alamat_pengirim', '$tanggal_surat', '$nomor_surat', '$perihal', '$alamat_tujuan', '$isi_disposisi', '$keterangan')";
 
     if (mysqli_query($koneksi, $query)) {
+        $_SESSION['pesan'] = "Data Surat berhasil disimpan!";
         addTindakan($koneksi, 'Surat', "Menambahkan surat: $nomor_surat");
         header("Location: ../sidebar/tambah-surat.php?status=sukses");
         exit;

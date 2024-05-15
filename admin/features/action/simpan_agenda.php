@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$alamat_pengirim', '$tanggal_surat', '$nomor_surat', '$perihal', '$alamat_tujuan', '$isi_disposisi')";
 
     if (mysqli_query($koneksi, $query)) {
+        $_SESSION['pesan'] = "Data Agenda berhasil disimpan!";
         addTindakan($koneksi, 'Agenda Masuk', "Menambahkan agenda masuk: $nomor_surat");
         header("Location: ../sidebar/tambah-agenda.php?status=sukses");
         exit;
