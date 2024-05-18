@@ -106,19 +106,19 @@ session_start();
                                 Kegiatan
                             </button>
                             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="../dom/surat_masuk.php">Surat Masuk</a></li>
+                                <li><a class="dropdown-item" href="../surat_masuk.php">Surat Masuk</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../dom/undangan.php">Undangan </a></li>
+                                <li><a class="dropdown-item" href="../undangan.php">Undangan </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../dom/agendaM.php">Agenda Masuk</a></li>
+                                <li><a class="dropdown-item" href="../agendaM.php">Agenda Masuk</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../dom/agendaA.php">Agenda Ajuan</a></li>
+                                <li><a class="dropdown-item" href="../agendaA.php">Agenda Ajuan</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

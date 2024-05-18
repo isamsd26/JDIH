@@ -1,5 +1,4 @@
 <?php
-include_once 'C:/xampp/htdocs/JDIH/admin/config/pagination.php';
 
 // Set the number of records per page
 $records_per_page = 5;
