@@ -1,9 +1,25 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'user') {
+if (!isset($_SESSION['username'])) {
     header("Location: features/login.php");
     exit;
+}
+if (isset($_SESSION['pesan'])) {
+    // Tampilkan pesan notifikasi sebagai toast
+    echo "
+        <div class='toast show position-fixed bottom-0 end-0 p-3' role='alert' aria-live='assertive' aria-atomic='true'>
+            <div class='toast-header'>
+                <strong class='me-auto'>Notifikasi</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
+            </div>
+            <div class='toast-body'>
+                {$_SESSION['pesan']}
+            </div>
+        </div>";
+
+    // Hapus pesan notifikasi setelah ditampilkan
+    unset($_SESSION['pesan']);
 }
 ?>
 
@@ -97,6 +113,16 @@ if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'user') {
             </div>
         </main>
     </div>
+    <script>
+        // Fungsi untuk menyembunyikan toast setelah beberapa detik
+        setTimeout(() => {
+            const toast = document.querySelector('.toast');
+            if (toast) {
+                const toastInstance = new bootstrap.Toast(toast);
+                toastInstance.hide();
+            }
+        }, 5000); // Sesuaikan waktu delay di sini (dalam milidetik)
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="js/datatables-simple-demo.js"></script>

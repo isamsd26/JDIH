@@ -3,16 +3,23 @@ session_start();
 include '../dom/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
-    $password = mysqli_real_escape_string($koneksi, $_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $query = "INSERT INTO user (username, password, role_id) VALUES ('$username', '$password', 1)";
-    if (mysqli_query($koneksi, $query)) {
-        $_SESSION['pesan'] = "Akun berhasil dibuat. Silakan login.";
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Lakukan insert data ke tabel "admin"
+    $query = "INSERT INTO admin (username, password) VALUES ('$username', '$hashed_password')";
+
+    $result = mysqli_query($koneksi, $query);
+
+    if ($result) {
+        $_SESSION['pesan'] = "Registrasi berhasil!";
         header("Location: ../login.php");
         exit;
     } else {
-        $_SESSION['pesan'] = "Terjadi kesalahan. Silakan coba lagi.";
+        $_SESSION['pesan'] = "Registrasi gagal. Silakan coba lagi.";
         header("Location: register.php");
         exit;
     }

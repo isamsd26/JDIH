@@ -22,8 +22,8 @@ $actions = getLatestActions($koneksi);
     <?php
     session_start();
 
-    if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'admin') {
-        header("Location: features/login.php");  // Arahkan ke halaman login
+    if (!isset($_SESSION['username'])) {
+        header("Location: features/login.php");
         exit;
     }
 

@@ -11,6 +11,7 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="../assets/jateng.png" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 
 <body class="bg-log">
@@ -20,8 +21,6 @@
                 <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #FAE633;">
                     <!-- Navbar Brand-->
                     <a class="navbar-brand ps-3 text-dark fw-bold">BIRO HUKUM INFORMATION CENTER</a>
-                    <!-- Sidebar Toggle-->
-                    <!-- Navbar Search-->
                 </nav>
                 <div class="container">
                     <div class="row justify-content-center">
@@ -59,7 +58,7 @@
             <!-- Notifikasi Toast -->
             <?php
             session_start();
-            if (isset($_SESSION['pesan'])) {  // Ambil pesan dari sesi
+            if (isset($_SESSION['pesan'])) {
                 echo "
             <div class='toast show position-fixed bottom-0 end-0 p-3' role='alert' aria-live='assertive' aria-atomic='true'>
                 <div class='toast-header'>
@@ -73,7 +72,6 @@
                 unset($_SESSION['pesan']);  // Hapus pesan setelah ditampilkan
             }
             ?>
-            <!-- Form Login -->
         </div>
         <div id="layoutAuthentication_footer">
             <footer class="py-4 bg-light mt-auto">
