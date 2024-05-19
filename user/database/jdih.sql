@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Bulan Mei 2024 pada 17.45
+-- Waktu pembuatan: 19 Bulan Mei 2024 pada 10.14
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `jdih`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
+(1, 'Denny', '$2y$10$vfE35s5fMBwldIT9xxj61.PMVurwr1icVwPDArrxc75Psn4JuS1Iu');
 
 -- --------------------------------------------------------
 
@@ -134,7 +153,8 @@ INSERT INTO `rapat` (`id_rapat`, `nama_rapat`, `tanggal_rapat`, `waktu_rapat`, `
 (13, 'rapat dana daaerah', '2024-05-15', '14:00:00', 'tempat 2', NULL),
 (14, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL),
 (15, 'rapat penting', '2024-05-19', '10:00:00', 'tempat 1', NULL),
-(16, 'rapat penting', '2024-05-20', '13:00:00', 'tempat 2', NULL);
+(16, 'rapat penting', '2024-05-20', '13:00:00', 'tempat 2', NULL),
+(17, 'rapat penting', '2024-05-21', '11:00:00', 'tempat 2', NULL);
 
 -- --------------------------------------------------------
 
@@ -208,7 +228,10 @@ INSERT INTO `tindakan` (`id`, `jenis`, `deskripsi`, `tanggal`) VALUES
 (3, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-14 16:51:21'),
 (4, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-15 12:51:03'),
 (5, 'Agenda Masuk', 'Menambahkan agenda masuk: N2014', '2024-05-15 12:51:31'),
-(6, 'Undangan', 'Menambahkan undangan: n2023', '2024-05-15 12:56:29');
+(6, 'Undangan', 'Menambahkan undangan: n2023', '2024-05-15 12:56:29'),
+(7, 'Rapat', 'Menambahkan rapat: rapat penting', '2024-05-18 11:01:48'),
+(8, 'Undangan', 'Menambahkan undangan: N2013', '2024-05-18 11:19:36'),
+(9, 'Undangan', 'Menambahkan undangan: N2013', '2024-05-18 11:21:09');
 
 -- --------------------------------------------------------
 
@@ -238,7 +261,9 @@ INSERT INTO `undangan` (`no_id`, `alamat_pengirim`, `tanggal_surat`, `nomor_sura
 (3, 'tegal sari', '2024-05-13', 'N2012', 'rapat penting', '2024-05-14', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi'),
 (4, 'tegal sari', '2024-05-13', 'N2013', 'rapat penting', '2024-05-16', 'Tempat Rapat 1', 'seluruh anggota', 'isi disposisi'),
 (5, 'slawi', '2024-05-16', 'S001', 'rapat penting', '2024-05-18', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2'),
-(6, 'tegal sari', '2024-05-20', 'n2023', 'jalan jalan', '2024-05-21', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2');
+(6, 'tegal sari', '2024-05-20', 'n2023', 'jalan jalan', '2024-05-21', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi 2'),
+(7, 'tegal sari', '2024-05-19', 'N2013', 'rapat penting', '2024-05-23', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi'),
+(8, 'keraton', '2024-05-19', 'N2013', 'rapat penting', '2024-05-18', 'Tempat Rapat 2', 'seluruh anggota', 'isi disposisi');
 
 -- --------------------------------------------------------
 
@@ -258,14 +283,21 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `role_id`) VALUES
-(1, 'admin', 'admin_password', 2),
 (2, 'user1', 'user_password', 1),
 (3, 'user2', 'user_password', 1),
-(7, 'jamal', '12345', 1);
+(7, 'jamal', '12345', 1),
+(8, 'udin', '12345', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `username_UNIQUE` (`username`);
 
 --
 -- Indeks untuk tabel `agenda_ajuan`
@@ -328,6 +360,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `agenda_ajuan`
 --
 ALTER TABLE `agenda_ajuan`
@@ -349,7 +387,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
@@ -367,19 +405,19 @@ ALTER TABLE `surat_masuk`
 -- AUTO_INCREMENT untuk tabel `tindakan`
 --
 ALTER TABLE `tindakan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `undangan`
 --
 ALTER TABLE `undangan`
-  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `no_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
