@@ -8,7 +8,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $items_per_page;
 
 // Query untuk mendapatkan surat masuk dengan urutan dari yang terbaru
-$query = "SELECT id_surat, alamat_pengirim, tanggal_surat, nomor_surat, perihal, alamat_tujuan, isi_disposisi, keterangan 
+$query = "SELECT id_surat, alamat_pengirim, tanggal_surat, nomor_surat, perihal, alamat_tujuan, isi_disposisi
           FROM surat_masuk 
           ORDER BY tanggal_surat DESC 
           LIMIT $items_per_page OFFSET $offset";
@@ -44,7 +44,6 @@ if (mysqli_num_rows($hasil) > 0) {
     echo '    <th>PERIHAL</th>';
     echo '    <th>ALAMAT TUJUAN</th>';
     echo '    <th>ISI DISPOSISI</th>';
-    echo '    <th>KETERANGAN</th>';
     echo '  </tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -58,7 +57,6 @@ if (mysqli_num_rows($hasil) > 0) {
         echo "  <td>{$row['perihal']}</td>";
         echo "  <td>{$row['alamat_tujuan']}</td>";
         echo "  <td>{$row['isi_disposisi']}</td>";
-        echo "  <td>{$row['keterangan']}</td>";
         echo '</tr>';
     }
 

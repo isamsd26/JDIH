@@ -39,35 +39,7 @@
                     <?php include 'dom/surat-masuk.php'; ?>
                 </div>
             </div>
-            <div class=" ms-3">
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #D6D6D6;">
-                        Kegiatan
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Surat Masuk</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="undangan.php">Undangan </a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="agendaM.php">Agenda Masuk</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="agendaA.php">Agenda Ajuan</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                    </ul>
-                </div>
-                <div class="my-2">
-                    <a type="button" class="btn btn-light" href="../display.php" style="background-color: #D6D6D6;">rapat</a>
-                </div>
-
-            </div>
+            
         </main>
     </div>
     </div>

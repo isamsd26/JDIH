@@ -37,34 +37,7 @@
             <div class="pb-2 mb-4 bg-tbl rounded">
                 <?php include 'features/dom/tbl-rapat.php'; ?>
             </div>
-            <div class=" ms-3">
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #D6D6D6;">
-                        Kegiatan
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="features/surat_masuk.php">Surat Masuk</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="features/undangan.php">Undangan</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="features/agendaM.php">Agenda Masuk</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="features/agendaA.php">Agenda Ajuan</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                    </ul>
-                </div>
-                <div class="my-2">
-                    <button type="button" class="btn btn-light" href="display.php" style="background-color: #D6D6D6;">rapat</button>
-                </div>
-            </div>
+
         </div>
     </main>
 
