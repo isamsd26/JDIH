@@ -149,10 +149,6 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
                             </div>
                             <form class="card-body bg-tbl" method="POST" action="../action/simpan_surat.php">
                                 <div class="form-group row mb-3 me-3">
-                                    <label class="col-2 text-end" for="id_surat">ID Surat :</label>
-                                    <input class="col-10" type="text" id="id_surat" name="id_surat">
-                                </div>
-                                <div class="form-group row mb-3 me-3">
                                     <label class="col-2 text-end" for="alamat_pengirim">Alamat Pengirim :</label>
                                     <input class="col-10" type="text" id="alamat_pengirim" name="alamat_pengirim">
                                 </div>

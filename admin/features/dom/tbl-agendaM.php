@@ -5,6 +5,19 @@ $items_per_page = 5;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $items_per_page;
 
+$alert_message = "";
+if (isset($_GET['delete_id'])) {
+    $delete_id = $_GET['delete_id'];
+    $delete_query = "DELETE FROM agenda_masuk WHERE no_id = '$delete_id'";
+    $delete_result = mysqli_query($koneksi, $delete_query);
+
+    if ($delete_result) {
+        $alert_message = "<div class='alert alert-success' id='alert-message'>Data berhasil dihapus.</div>";
+    } else {
+        $alert_message = "<div class='alert alert-danger' id='alert-message'>Gagal menghapus data: " . mysqli_error($koneksi) . "</div>";
+    }
+}
+
 // Query untuk mendapatkan agenda masuk dengan urutan dari yang terbaru
 $query = "SELECT no_id, alamat_pengirim, tanggal_surat, nomor_surat, perihal, alamat_tujuan, isi_disposisi 
           FROM agenda_masuk 
@@ -20,6 +33,10 @@ $total_items = $total_row['total'];
 $total_pages = ceil($total_items / $items_per_page);
 
 echo '<div class="container">';
+if (!empty($alert_message)) {
+    echo $alert_message;
+}
+
 if ($hasil && mysqli_num_rows($hasil) > 0) {
     echo '<table class="table table-striped">';
     echo '<thead>';
@@ -31,6 +48,7 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
     echo '    <th>PERIHAL</th>';
     echo '    <th>ALAMAT TUJUAN</th>';
     echo '    <th>ISI DISPOSISI</th>';
+    echo '    <th>ACTION</th>';
     echo '  </tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -46,6 +64,7 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
         echo "  <td>{$row['perihal']}</td>";
         echo "  <td>{$row['alamat_tujuan']}</td>";
         echo "  <td>{$row['isi_disposisi']}</td>";
+        echo "  <td><a href='agendaM.php?delete_id={$row['no_id']}' class='btn btn-danger' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data ini?\")'><i class='fa-solid fa-trash-can' style='color: #050505;'></i></a></td>";
         echo '</tr>';
         $no_agenda++; // Menambah nomor agenda untuk baris berikutnya
     }
@@ -81,3 +100,18 @@ if ($hasil && mysqli_num_rows($hasil) > 0) {
     echo "Tidak ada data agenda masuk yang ditemukan.";
 }
 echo '</div>';
+?>
+
+<script>
+    // Menghilangkan alert setelah 5 detik
+    setTimeout(function() {
+        var alert = document.getElementById('alert-message');
+        if (alert) {
+            alert.style.transition = 'opacity 1s ease-out';
+            alert.style.opacity = '0';
+            setTimeout(function() {
+                alert.remove();
+            }, 1000);
+        }
+    }, 5000);
+</script>

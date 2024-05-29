@@ -42,7 +42,11 @@
                                             <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Password" required />
                                             <label for="inputPassword">Password</label>
                                         </div>
-                                        <button type="submit" class="btn btn-dark d-flex justify-content-center text-dark" style="background-color: #FFE401;">Login</button>
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-dark d-flex justify-content-center text-dark" style="background-color: #FFE401;">Login</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
@@ -72,20 +76,6 @@
                 unset($_SESSION['pesan']);  // Hapus pesan setelah ditampilkan
             }
             ?>
-        </div>
-        <div id="layoutAuthentication_footer">
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

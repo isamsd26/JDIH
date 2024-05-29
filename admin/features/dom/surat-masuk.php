@@ -1,6 +1,20 @@
 <?php
 include 'koneksi.php';
 
+// Fungsi untuk menghapus surat berdasarkan ID
+$alert_message = "";
+if (isset($_GET['delete_id'])) {
+    $delete_id = $_GET['delete_id'];
+    $delete_query = "DELETE FROM surat_masuk WHERE id_surat = '$delete_id'";
+    $delete_result = mysqli_query($koneksi, $delete_query);
+
+    if ($delete_result) {
+        $alert_message = "<div class='alert alert-success' id='alert-message'>Data berhasil dihapus.</div>";
+    } else {
+        $alert_message = "<div class='alert alert-danger' id='alert-message'>Gagal menghapus data: " . mysqli_error($koneksi) . "</div>";
+    }
+}
+
 // Tentukan jumlah item per halaman
 $items_per_page = 5;
 // Ambil nomor halaman dari parameter URL, default ke halaman 1 jika tidak ada
@@ -33,31 +47,39 @@ if ($total_result) {
 }
 
 echo '<div class="container">';
+if (!empty($alert_message)) {
+    echo $alert_message;
+}
+
 if (mysqli_num_rows($hasil) > 0) {
     echo '<table class="table table-striped">';
     echo '<thead>';
     echo '  <tr>';
-    echo '    <th>ID SURAT</th>';
+    echo '    <th>No</th>';
     echo '    <th>ALAMAT PENGIRIM</th>';
     echo '    <th>TANGGAL SURAT</th>';
     echo '    <th>NOMOR SURAT</th>';
     echo '    <th>PERIHAL</th>';
     echo '    <th>ALAMAT TUJUAN</th>';
     echo '    <th>ISI DISPOSISI</th>';
+    echo '    <th>ACTION</th>';
     echo '  </tr>';
     echo '</thead>';
     echo '<tbody>';
 
+    $no = $offset + 1;
     while ($row = mysqli_fetch_assoc($hasil)) {
         echo '<tr>';
-        echo "  <td>{$row['id_surat']}</td>";
+        echo "  <td>{$no}</td>";
         echo "  <td>{$row['alamat_pengirim']}</td>";
         echo "  <td>{$row['tanggal_surat']}</td>";
         echo "  <td>{$row['nomor_surat']}</td>";
         echo "  <td>{$row['perihal']}</td>";
         echo "  <td>{$row['alamat_tujuan']}</td>";
         echo "  <td>{$row['isi_disposisi']}</td>";
+        echo "  <td><a href='surat_masuk.php?delete_id={$row['id_surat']}' class='btn btn-danger' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data ini?\")'><i class='fa-solid fa-trash-can' style='color: #050505;'></i></a></td>";
         echo '</tr>';
+        $no++;
     }
 
     echo '</tbody>';
@@ -91,3 +113,17 @@ if (mysqli_num_rows($hasil) > 0) {
     echo "Tidak ada data surat masuk yang ditemukan.";
 }
 echo '</div>';
+?>
+<script>
+    // Menghilangkan alert setelah 5 detik
+    setTimeout(function() {
+        var alert = document.getElementById('alert-message');
+        if (alert) {
+            alert.style.transition = 'opacity 1s ease-out';
+            alert.style.opacity = '0';
+            setTimeout(function() {
+                alert.remove();
+            }, 1000);
+        }
+    }, 5000);
+</script>
